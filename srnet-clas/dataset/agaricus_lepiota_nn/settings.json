@@ -1,0 +1,15 @@
+{
+    "n_epoch": 8000,
+    "batch_size": 6108,
+    "optimizer": "SGD",
+    "lr": 0.03,
+    "mlp_model": "MLP",
+    "structure": [
+        22,
+        100,
+        100,
+        2
+    ],
+    "acc_train": 0.933693528175354,
+    "acc_test": 0.9396170377731323
+}
