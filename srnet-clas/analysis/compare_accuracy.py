@@ -8,8 +8,8 @@ import torch
 from data_utils import io
 from neural_networks.nn_models import NN_MAP
 
-DATASET_PREFIX = '/home/luoyuanzhen/STORAGE/dataset/pmlb/'
-RESULT_PREFIX = '/home/luoyuanzhen/STORAGE/result/pmlb/'
+DATASET_PREFIX = 'dataset/'
+RESULT_PREFIX = 'result/'
 datasets = ['adult', 'analcatdata_aids', 'agaricus_lepiota', 'breast', 'car']
 nn_dirs = ['{}_nn'.format(dataset) for dataset in datasets]
 

@@ -1,0 +1,13 @@
+{
+    "neurons": [
+        3,
+        4,
+        4,
+        1
+    ],
+    "n_epoch": 50000,
+    "batch_size": 300,
+    "optimizer": "Adam",
+    "lr": 0.003,
+    "mlp_model": "MLP2"
+}

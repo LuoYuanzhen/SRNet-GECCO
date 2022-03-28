@@ -1,0 +1,14 @@
+kkk0:   sin(x)+sin(x+x^2)   		    (koza)  	    [-1, 1] 	        200
+kkk1:   2sin(x0)cos(x1)      		    (koza)          [-1, 1]             200
+kkk2:   3+2.13ln|x|              		(korns)         [-50, 50]           200
+kkk3:   1/(1+x^(-4))+1/(1+y^(-4))       (korns)	        [-5,5,0.4]          25
+kkk4:   30xydiv((x-10)zz) 		        (keijzer)	    x,z:U[-1,1]         1000
+                                                        y:U[1,2]
+kkk5:   xy + sin((x-1)(y-1))   		    (keijzer)	    [-3,3]              20
+
+feynman0:	I.10.7	related-theory-mass-velocity		3
+feynman1:	I.12.2	coulombs_law				4
+feynman2:	I.13.12 gravitational-potential			5
+feynman3:	I.14.4	elastic-potential			2
+feynman4:	test_9	gravitational-wave-retiated-power	5
+feynman5:	test_12	jackson-2.11				5

@@ -43,10 +43,10 @@ def find_great_point(X, clf, n=2):
     return np.array([x0_mean, x1])
 
 
-RESULT_PREFIX = '/home/luoyuanzhen/STORAGE/result/'
-DATASET_PREFIX = '/home/luoyuanzhen/STORAGE/dataset/'
+RESULT_PREFIX = 'result/'
+DATASET_PREFIX = 'dataset/'
 names = ['agaricus_lepiota']
-result_dataset_names = ['pmlb/{}'.format(name) for name in names]
+result_dataset_names = names
 dataset_names = ['{}_nn'.format(name) for name in result_dataset_names]
 figure_dir = os.path.join(RESULT_PREFIX, 'figures')
 io.mkdir(figure_dir)

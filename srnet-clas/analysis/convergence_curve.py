@@ -12,36 +12,12 @@ matplotlib.rcParams['pdf.fonttype'] = 42
 matplotlib.rcParams['ps.fonttype'] = 42
 
 
-RESULT_PREFIX = '/home/luoyuanzhen/STORAGE/result/'
-result_dataset_names = ['pmlb/adult', 'pmlb/analcatdata_aids', 'pmlb/agaricus_lepiota', 'pmlb/breast', 'pmlb/car']
-# result_dataset_names = list(['regression/kkk{}'.format(i) for i in range(6)]) + list(['regression/feynman{}'.format(i) for i in range(6)])
+RESULT_PREFIX = 'result/'
+result_dataset_names = ['adult', 'analcatdata_aids', 'agaricus_lepiota', 'breast', 'car']
 figure_dir = os.path.join(RESULT_PREFIX, 'figures')
 io.mkdir(figure_dir)
 
 names = ['P0', 'P1', 'P2', 'P3', 'P4']
-# names = list(['K{}'.format(i) for i in range(6)]) + list(['F{}'.format(i) for i in range(6)])
-
-
-# def classification_convergence():
-#     max_fitness = 0.
-#     for result_dataset, name in zip(result_dataset_names, names):
-#         all_conv_path = os.path.join(RESULT_PREFIX, result_dataset, 'all_conv')
-#         all_conv = np.loadtxt(all_conv_path)  # n_trials, n_generations
-#         if all_conv.shape[1] < 5000:
-#             fill = np.repeat(all_conv[:, -1].reshape(-1, 1), 5000-all_conv.shape[1], axis=1)
-#             all_conv = np.hstack((all_conv, fill))
-#         max_fitness = max(max_fitness, np.max(all_conv))
-#         draw_convergence(all_conv, label=name)
-#
-#     ax = plt.axes()
-#     ax.spines['right'].set_visible(False)
-#     ax.spines['top'].set_visible(False)
-#     plt.grid()
-#     plt.xticks([0, 2500, 5000])
-#     plt.yticks([max_fitness, max_fitness / 2, 0])
-#     plt.legend(ncol=5, loc='upper center')
-#     plt.savefig(os.path.join(figure_dir, 'classification_convergence.pdf'), dpi=600)
-#     plt.show()
 
 
 def classification_convergence():
