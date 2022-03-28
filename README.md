@@ -46,9 +46,11 @@ We compare SRNet to LIME and MAPLE on both regression and classification tasks.
 
 ### Classifiation
 Decision boundary:
+
 ![DB of SRNet vs. LIME vs. MAPLE](https://github.com/LuoYuanzhen/SRNet-GECCO/blob/master/srnet-clas/result/local_db.png)
 
 Accuracy:
+
 ![Acc of SRNet vs. LIME vs. MAPLE](https://github.com/LuoYuanzhen/SRNet-GECCO/blob/master/srnet-clas/result/accs.png)
 
 # 4. Cite
