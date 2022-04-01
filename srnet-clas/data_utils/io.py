@@ -32,26 +32,6 @@ def load_mlp_dataset(dataset_dir, dataname, source):
     return training_set, test_set
 
 
-def load_cnn_dataset(dataset_dir, dataname, source):
-    # standard pytorch loader method
-    assert source in sources
-
-    transform = torchvision.transforms.Compose([
-            torchvision.transforms.ToTensor(),
-            torchvision.transforms.Normalize((0.1307,), (0.3081,))
-    ])
-    dataset_locate = os.path.join(dataset_dir, dataname)
-    training_set = torchvision.datasets.MNIST(
-        dataset_locate, train=True, download=True,
-        transform=transform
-    )
-    test_set = torchvision.datasets.MNIST(
-        dataset_locate, train=False, download=True,
-        transform=transform
-    )
-    return training_set, test_set
-
-
 def get_blackbox(nn_dir, model_clas):
     with open(os.path.join(nn_dir, 'settings.json'), 'r') as f:
         structure = json.load(f)['structure']

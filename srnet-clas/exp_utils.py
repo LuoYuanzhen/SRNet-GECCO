@@ -81,33 +81,6 @@ def brute_force_class_sample(features, predict_func, n_sample=1000, balance=Fals
     return X_samples, y_prob_samples, d_samples
 
 
-def brute_force_random_class_sample(features, predict_func, n_sample=500):
-    predict_prob = predict_func(features)
-    n_feature, n_class = features.shape[1], predict_prob.shape[1]
-    uniform_prob = torch.ones(n_class) * (1 / n_class)
-    n_class_sample = n_sample // n_class
-
-    # we generate random N(0, 1) data points
-    n_random = n_sample * 10
-    n_ci_samples = [n_class_sample] * n_class
-    X_samples = []
-
-    random_points = torch.randn(n_random, n_feature)
-    random_prb = predict_func(features)
-    random_predict = random_prb.argmax(dim=1)
-    for ci in range(n_class):
-        ci_indices = random_predict == ci
-
-        ci_points = random_points[ci_indices, :]
-        ci_prb = random_prb[ci_indices, :]
-
-        d_ci = ((ci_prb - uniform_prob)**2).mean(dim=1)
-        d_ci, d_indices = torch.sort(d_ci)
-
-        X_samples.append(ci_points[d_indices[:n_class_sample]])
-        n_ci_samples[ci] -= len(d_indices[:n_class_sample])
-
-
 def grid_data(X, n_sample=200):
     if isinstance(X, torch.Tensor):
         X = X.detach().numpy()

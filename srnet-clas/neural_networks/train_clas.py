@@ -17,12 +17,12 @@ from data_utils import draw, io
 from neural_networks.nn_models import MLP, LeNet
 
 
-DATASET_PREFIX = '/home/luoyuanzhen/RemoteDisk/STORAGE/dataset/'
+DATASET_PREFIX = '../dataset/'
 parser = argparse.ArgumentParser("training classifier")
-parser.add_argument('--dataset_dir', type=str, default='mnist/')
-parser.add_argument('--dataname', type=str, default='digit')
-parser.add_argument('--model', type=str, default='cnn', choices=['mlp', 'cnn'])
-parser.add_argument('--source', type=str, default='mnist')
+parser.add_argument('--dataset_dir', type=str, default='pmlb/')
+parser.add_argument('--dataname', type=str, default='adult')
+parser.add_argument('--model', type=str, default='mlp', choices=['mlp', 'cnn'])
+parser.add_argument('--source', type=str, default='pmlb')
 args = parser.parse_args()
 
 source = args.source
@@ -108,40 +108,6 @@ def train_clf(classifier, training_set, test_set):
                                   ylabel='loss',
                                   labels=['Train', 'Test'])
     return train_acc_aver, test_acc_aver
-
-
-def train_cnn_classifier():
-    training_set, test_set = load_cnn_dataset(
-        data_path, dataset_name, source
-    )
-    n_train = training_set.data.shape[0]
-    classifier_blackbox = nn_model.to(device)
-
-    train_acc_aver, test_acc_aver = train_clf(classifier_blackbox, training_set, test_set)
-
-    # Save hyperparameters
-    hp_path = save_path + 'settings.json'
-    x_instance, y_instance = training_set[0]
-    x_instance = x_instance.unsqueeze(dim=1)
-    n_conv = len(classifier_blackbox.n_channels) - 1
-    blackbox_outputs = classifier_blackbox(x_instance.to(device))
-    conv_input_shapes = [x_instance.shape[2:]] + [conved.shape[2:] for conved in blackbox_outputs[:n_conv-1]]
-    conv_output_shapes = classifier_blackbox.conv_output_size_list
-    mlp_structure = [classifier_blackbox.n_input] + classifier_blackbox.n_hiddens + [classifier_blackbox.n_output]
-    log_dict = {
-        'n_epoch': n_epoch,
-        'batch_size': int(batch_size * n_train),
-        'optimizer': optimizer_class.__name__,
-        'lr': lr,
-        'mlp_model': classifier_blackbox.__class__.__name__,
-        'input_img_shapes': conv_input_shapes,
-        'output_img_shapes': conv_output_shapes,
-        'mlp_structure': mlp_structure,
-        'acc_train': train_acc_aver,
-        'acc_test': test_acc_aver
-    }
-    with open(hp_path, 'w') as f:
-        json.dump(log_dict, f, indent=4)
 
 
 def train_mlp_classifier():

@@ -44,6 +44,7 @@ for dataset, nn_dir in zip(datasets, nn_dirs):
             acc_json['{}_min'.format(name)] = torch.min(acc).item()
             acc_json['{}_mean'.format(name)] = torch.mean(acc).item()
             acc_json['{}_max'.format(name)] = torch.max(acc).item()
+            acc_json['{}_std'.format(name)] = torch.std(acc, dim=0).item()
 
     with open(os.path.join(path, 'srnet_acc.json'), 'w') as f:
         json.dump(acc_json, f, indent=4)
